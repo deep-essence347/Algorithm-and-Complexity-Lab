@@ -15,8 +15,10 @@ class BinHeap:
             # Child parent vanda sano xa vane swap garxa
             if self.heap_list[i] < self.heap_list[i // 2]:
                 self.heap_list[i//2],self.heap_list[i]=self.heap_list[i],self.heap_list[i//2]
-            # Parent node ko index ma janxa
-            i = i // 2
+                # Parent node ko index ma janxa
+                i = i // 2
+            else:
+                break
     
     # Top to Bottom
     def Heapify_down(self, i):
@@ -43,9 +45,9 @@ class BinHeap:
         popped = self.heap_list[1]
         self.heap_list[1] = self.heap_list[self.current_size]
         self.current_size = self.current_size - 1
-        self.heap_list.pop(1)
-        self.Heapify_down(self.current_size)
-        print(popped)
+        self.heap_list.pop()
+        self.Heapify_down(1)
+        return popped
 
     def build_heap(self, a_list):
         i = len(a_list) // 2
@@ -55,12 +57,28 @@ class BinHeap:
             self.Heapify_down(i)
             i -= 1
 
-    def printList(self):
-        print(self.heap_list)
+    def heapSort(self):
+        sorted = []
+        for u in range(self.current_size):
+            sorted.append(self.delete_min())
+        return sorted
 
-a = BinHeap()
-# a.insert(5)
-# a.insert(2)
-# a.insert(6)
-# a.insert(1)
-a.printList()
+    def heap(self):
+        return self.heap_list[1:]
+
+if __name__ == '__main__':
+    a = BinHeap()
+    a.insert(5)
+    a.insert(2)
+    a.insert(6)
+    a.insert(1)
+    a.insert(7)
+    print('Initial Heap: ', a.heap())
+
+    print('Enter 10 elements to insert into the heap: ')
+    for i in range(0,10):
+        element = int(input('>>'))
+        a.insert(element)
+
+    print('Unsorted Heap: ',a.heap())
+    print('Sorted Heap: ',a.heapSort())
