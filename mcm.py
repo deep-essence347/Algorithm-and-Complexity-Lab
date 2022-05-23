@@ -28,9 +28,9 @@ def MCM(m,kt,p):
 	n=len(p)
 	for i in range(1, n):
 		m[i][i]=0
-	for L in range(2, n):
-		for i in range(1, n-L +1):
-			j = i + L-1
+	for l in range(2, n):
+		for i in range(1, n-l +1):
+			j = i + l-1
 			m[i][j] = math.inf
 			for k in range(i, j):
 				newAns = m[i][k] + m[k + 1][j] + p[i-1]*p[k]*p[j]
@@ -72,15 +72,17 @@ if __name__ == '__main__':
 		m_table=[[0 for i in range(n+1)] for j in range(n+1)]
 		k_table=[[0 for i in range(n+1)] for j in range(n+1)]
 		
-		ds = []
-		for i in range(len(matrices)):
+		ds = [] #Dimension sequence
+		for i in range(n):
 			ds.append(matrices[i]['rows'])
-			if i==(len(matrices)-1):
+			if i==(n-1):
 				ds.append(matrices[i]['cols'])
 
-		a = MCM(m_table,k_table,ds)
+		MCM(m_table,k_table,ds)
 		printTables(m_table,k_table)
 
+		print('\nOptimal Solution: ',end='')
 		printOptSoln(k_table,1,n,matrices)
+		print('\nThe number of multiplications for optimal solution is',m_table[1][n],end='.')
 
 

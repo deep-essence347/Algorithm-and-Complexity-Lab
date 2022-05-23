@@ -1,4 +1,4 @@
-def takeInput():
+def takeInput(): #unused here...
 	activities=[[],[],[]]
 	n = int(input('Enter the number of activities: '))
 	print('Enter Start Time(ST) and Finish Time(FT) for each activity:')
@@ -39,8 +39,8 @@ def activity_selector(s,f,k,n,selected):
 if __name__ =='__main__':
 	activities = [
 		[1,2,3,4,5,6,7,8,9,10,11],
-		[1,3,0,5,3,5,6,8,8,2,12],
-		[4,5,6,7,9,9,10,11,12,14,16]
+		[1,6,3,5,3,0,12,5,8,8,2],
+		[4,10,5,7,9,6,16,9,11,12,14]
 	]
 
 	activities = sortByFT(activities)
@@ -49,7 +49,7 @@ if __name__ =='__main__':
 	selectedActivities = [(activities[0][0],activities[1][0],activities[2][0])]
 	activity_selector(activities[1],activities[2],0,len(activities[0])-1,selectedActivities)
 	
-	print('\nSelected Activities are: ')
+	print('\nSelected Activities are:')
 	for activity in selectedActivities:
 		print('Activity: ',activity[0],', ST: ',activity[1],', FT: ',activity[2], sep='')
 

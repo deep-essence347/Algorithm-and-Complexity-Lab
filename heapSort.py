@@ -68,17 +68,17 @@ class BinHeap:
 
 if __name__ == '__main__':
     a = BinHeap()
-    a.insert(5)
-    a.insert(2)
-    a.insert(6)
-    a.insert(1)
-    a.insert(7)
-    print('Initial Heap: ', a.heap())
+    a.insert(54)
+    a.insert(21)
+    a.insert(68)
+    a.insert(13)
+    a.insert(70)
+    print('Initial Heap:', a.heap())
 
-    print('Enter 10 elements to insert into the heap: ')
+    print('Enter 10 elements to insert into the heap:')
     for i in range(0,10):
-        element = int(input('>>'))
+        element = int(input('>> '))
         a.insert(element)
 
-    print('Unsorted Heap: ',a.heap())
-    print('Sorted Heap: ',a.heapSort())
+    print('Unsorted Heap:',a.heap())
+    print('Sorted Heap:',a.heapSort())
